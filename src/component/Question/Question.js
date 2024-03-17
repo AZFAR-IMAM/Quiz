@@ -2,6 +2,7 @@ import { useState } from "react";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./Question.css";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 function Question({
   currQues,
   setCurrQues,
@@ -14,6 +15,7 @@ function Question({
 }) {
   const [selected, setSelected] = useState();
   const [error, setError] = useState();
+  const navigate = useNavigate();
   const handelSelect = (option) => {
     if (option === correct && option === selected) {
       return "select";
@@ -30,8 +32,20 @@ function Question({
     }
     setError(false);
   };
-  const handleQuit = () => {};
-  const handleNext = () => {};
+  const handleQuit = () => {
+    navigate("/");
+  };
+  const handleNext = () => {
+    if (currQues > 3) {
+      navigate("/result");
+    } else if (selected) {
+      setCurrQues(currQues + 1);
+      setSelected("");
+    } else {
+      setError("Select an option first");
+    }
+  };
+
   return (
     <div className="question">
       <h2>Question : {currQues + 1}</h2>

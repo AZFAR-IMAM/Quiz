@@ -50,7 +50,10 @@ function App(category, difficulty) {
               />
             }
           />
-          <Route path="/result" element={<Result />} />
+          <Route
+            path="/result"
+            element={<Result name={name} score={score} />}
+          />
         </Routes>
       </BrowserRouter>
       ;
