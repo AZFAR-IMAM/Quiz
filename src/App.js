@@ -8,7 +8,7 @@ import { useState } from "react";
 import axios from "axios";
 
 function App(category, difficulty) {
-  const [name, setName] = useState("azfar");
+  const [name, setName] = useState("");
   const [questions, setQuestions] = useState();
   const [score, setScore] = useState(0);
   const fetchQuestion = async (category = "", difficulty = "") => {
